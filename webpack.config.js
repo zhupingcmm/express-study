@@ -8,8 +8,10 @@ module.exports = {
     output:{
         path: __dirname + '/dist',
         filename: '[name].js',
-        publicPath:'http://localhost:3000/dist/',
+        publicPath:'http://localhost:3015/',
     },
+    devtool: "source-map",
+    mode: 'development',
     module:{
         rules:[
             {
@@ -18,7 +20,22 @@ module.exports = {
                     loader: 'babel-loader'
                 }
 
-            }
+            },
+            {
+                test:/\.css$/,
+                use:[
+                    "style-loader",
+                    "css-loader",
+                ]
+            },
+            {
+                test:/\.scss$/,
+                use:[
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader"
+                ]
+            },
         ]
     },
     plugins:[
